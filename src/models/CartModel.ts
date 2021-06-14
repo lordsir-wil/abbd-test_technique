@@ -68,6 +68,14 @@ export class CartModel {
         })
     }
 
+    getCartContentQuantity() {
+        let quantity: number = 0;
+        this._content.forEach(elem => {
+            quantity += elem.quantity;
+        })
+        return quantity;
+    }
+
     getContent() {
         return this._content;
     }

@@ -12,14 +12,14 @@ const state: IProducts = {
 
 const actions: ActionTree<IProducts, any> = {
     getProductFromBack({ commit  }) {
-        //TODO: call mock server
+        state.products = [];
         axios
             .get(process.env.VUE_APP_URL_DB + '/posts')
             .then(response => {
                 response.data.map((product: ProductModel) => {
                     commit('ADD_PRODUCT_TO_LIST', new ProductModel(product.img, product.name, product.description));
                 })
-                 console.log(response.data)
+
             })
             .catch(error => console.log(error))
     }

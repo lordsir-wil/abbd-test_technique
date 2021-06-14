@@ -29,7 +29,7 @@ export default Vue.extend({
   components: {MkpRouterLink},
   computed: {
     counter() {
-      return this.$store.state.cartService.cart.size();
+      return this.$store.state.cartService.cart.getCartContentQuantity();
     }
   }
 })

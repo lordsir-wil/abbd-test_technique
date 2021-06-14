@@ -45,12 +45,13 @@ const mutations: MutationTree<ICart> = {
 };
 
 const getters: GetterTree<ICart, IRootState> = {
-    getCartContent(state: ICart) {
-        return state.cart.getContent();
-    },
-    getCartSize(state: ICart) {
-        return state.cart.size();
-    },
+    getCartContentQuantity(state: ICart) {
+        let quantity: number = 0;
+            state.cart.content.forEach(elem => {
+               quantity += elem.quantity;
+            })
+        return quantity;
+    }
 };
 
 export const CartService: Module<ICart, IRootState> = {

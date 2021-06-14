@@ -2,8 +2,8 @@
   "header": {
     "title": "My shop",
     "links": {
-      "product" : "Products",
-      "cart" : "cart"
+      "product" : "PRODUCT",
+      "cart" : "CART"
     }
   },
   "card": {
