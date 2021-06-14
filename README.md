@@ -1,24 +1,15 @@
 # abbd-test_technique
 
-## Project setup
-```
-npm install
-```
+## Prérequis:
+docker doit être installer sur votre poste.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Construire l'image:
+vous pouvez construire l’image Docker avec la commande suivante:
 
-### Compiles and minifies for production
-```
-npm run build
-```
+>docker build -t abbd-test/dockerize-vuejs-app .
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Lancement du docker:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+>docker run -it -p 8080:8080 --rm --name dockerize-vuejs-app-1 abbd-test/dockerize-vuejs-app
+
+Vous devriez avoir accèder à l'app sur <a name="localhost">localhost:8080</a>.

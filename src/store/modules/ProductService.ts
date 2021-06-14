@@ -10,27 +10,41 @@ const state: IProducts = {
 };
 
 const actions: ActionTree<IProducts, any> = {
-    getProductFromBack({ dispatch }) {
+    getProductFromBack({ commit  }) {
         //TODO: call mock server
-        dispatch('ADD_PRODUCT', new ProductModel('produit', 'c\'est un produit'));
-        dispatch('ADD_PRODUCT', new ProductModel('produit1', 'c\'est un produit1'));
-        dispatch('ADD_PRODUCT', new ProductModel('produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg', 'produit', 'c\'est un produit'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit1', 'c\'est un produit1'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
+        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit3', 'c\'est un produit2'));
+
     }
 };
 
 const mutations: MutationTree<IProducts> = {
-    ADD_PRODUCT_TO_LIST(state, product: ProductModel) {
+    ADD_PRODUCT_TO_LIST(state: IProducts, product: ProductModel) {
         state.products.push(product);
     }
 };
 
 const getters: GetterTree<IProducts, IRootState> = {
-    getCartContent(state: IProducts) {
+    getProducts() {
         return state.products;
     },
 };
 
 export const ProductService: Module<IProducts, IRootState> = {
+    namespaced: false,
     state,
     actions,
     mutations,

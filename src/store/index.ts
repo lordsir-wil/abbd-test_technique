@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex, {StoreOptions} from 'vuex'
+import Vuex, {Store, StoreOptions} from 'vuex'
 import {CartService} from "@/store/modules/CartService";
 import {ProductService} from "@/store/modules/ProductService";
 import {IRootState} from "@/store/intefaces/IRootState";
@@ -8,9 +8,14 @@ Vue.use(Vuex)
 
 const store: StoreOptions<IRootState> = {
   modules: {
-    CartService,
-    ProductService,
-  },
+    cartService: CartService,
+    productService: ProductService,
+  }
 };
 
-export default new Vuex.Store<IRootState>(store);
+const storage = new Vuex.Store<IRootState>(store)
+export default storage;
+
+storage.subscribe((mutation, state) => {
+  localStorage.setItem("cart", JSON.stringify(state.cartService.cart))
+})

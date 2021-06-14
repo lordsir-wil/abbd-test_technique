@@ -1,22 +1,30 @@
 import {ProductModel} from "./ProductModel";
+import {Article} from "@/models/Article";
 
 const DEFAULT_QUANTITY: number = 1;
 
-type Article = {
-    product: ProductModel,
-    quantity: number
-};
-
 export class CartModel {
 
-    private content: Article[];
+    private _content: Article[];
 
     constructor() {
-        this.content = new Array()
+        this._content = new Array()
+    }
+
+    get content(): Article[] {
+        return this._content;
+    }
+
+    set content(value: Article[]) {
+        this._content = value;
+    }
+
+    initContentFromStorage(value: Article[]) {
+        this._content = value;
     }
 
     size() {
-        return this.content.length;
+        return this._content.length;
     }
 
     addArcticleToCart(product: ProductModel, quantity: number = DEFAULT_QUANTITY) {
@@ -26,11 +34,11 @@ export class CartModel {
                 quantity: quantity
             };
 
-            this.content.push(article);
+            this._content.push(article);
         } else {
             this.addProduct(this.getArticle(product)!)
         }
-        return this.content;
+        return this._content;
     }
 
     removeArticleInCart(product: ProductModel) {
@@ -38,10 +46,10 @@ export class CartModel {
             return null;
         } else {
             const article = this.getArticle(product) as Article
-            const index = this.content.indexOf(article);
-            this.content.splice(index, 1);
+            const index = this._content.indexOf(article);
+            this._content.splice(index, 1);
         }
-        return this.content;
+        return this._content;
     }
 
     isInCart(product: ProductModel) {
@@ -55,13 +63,13 @@ export class CartModel {
     }
 
     getArticle(product: ProductModel) {
-        return this.content.find(obj => {
-            return obj.product === product;
+        return this._content.find(obj => {
+            return obj.product.img === product.img && obj.product.name === product.name && obj.product.description === product.description;
         })
     }
 
     getContent() {
-        return this.content;
+        return this._content;
     }
 
     private addProduct(article: Article) {
@@ -75,6 +83,6 @@ export class CartModel {
             quantity: DEFAULT_QUANTITY
         };
 
-        this.content.push(article);
+        this._content.push(article);
     }
 }

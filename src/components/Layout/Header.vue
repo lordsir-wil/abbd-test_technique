@@ -1,19 +1,38 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Products</router-link> |
-    <router-link to="/cart">Cart({{ counter }})</router-link>
+  <div id="headerShop">
+    <v-app-bar>
+      <v-toolbar-title>{{ $t("header.title")}}</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <mkp-router-link to="/">
+        {{$t("header.links.product")}}
+      </mkp-router-link>
+
+        <mkp-router-link to="/Cart">
+          {{$t("header.links.cart")}} ({{counter}})
+        </mkp-router-link>
+
+
+
+    </v-app-bar>
   </div>
 </template>
 
 <script>
-export default {
+import Vue from "vue";
+
+import MkpRouterLink from "@/components/advanced/RouterLink.vue";
+
+export default Vue.extend({
   name: "mkpHeader",
+  components: {MkpRouterLink},
   computed: {
     counter() {
-      return this.$store.state.CartService.cart.size();
+      return this.$store.state.cartService.cart.size();
     }
   }
-}
+})
 </script>
 
 <style scoped>

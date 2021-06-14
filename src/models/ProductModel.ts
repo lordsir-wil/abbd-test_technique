@@ -1,12 +1,23 @@
 export class ProductModel {
 
+    private _img: String;
+
     private _description: String;
 
     private _name: String;
 
-    constructor(name: String, description: String) {
+    constructor(img: String, name: String, description: String) {
+        this._img = img;
         this._name = name;
         this._description = description;
+    }
+
+    get img(): String {
+        return this._img;
+    }
+
+    set img(value: String) {
+        this._img = value;
     }
 
     get description(): String {

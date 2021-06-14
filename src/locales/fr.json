@@ -1,0 +1,19 @@
+{
+  "header": {
+    "title": "My shop",
+    "links": {
+      "product" : "Products",
+      "cart" : "cart"
+    }
+  },
+  "card": {
+    "button" : "Add to cart"
+  },
+  "cart": {
+    "title": "Cart",
+    "row": {
+      "button": "Remove"
+    },
+    "empty": "Your cart is empty"
+  }
+}
