@@ -1,7 +1,7 @@
 # abbd-test_technique
 
 ## Prérequis:
-Docker doit être installer sur votre poste.
+Docker doit être installé sur votre poste.
 
 ## Construire l'image:
 vous pouvez construire l’image Docker avec la commande suivante:
