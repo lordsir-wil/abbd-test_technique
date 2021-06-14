@@ -1,3 +1,4 @@
+import axios from "axios";
 import {CartModel} from "@/models/CartModel";
 import {ActionTree, GetterTree, Module, MutationTree} from "vuex";
 import {ICart} from "@/store/intefaces/ICart";
@@ -12,22 +13,15 @@ const state: IProducts = {
 const actions: ActionTree<IProducts, any> = {
     getProductFromBack({ commit  }) {
         //TODO: call mock server
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg', 'produit', 'c\'est un produit'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit1', 'c\'est un produit1'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit2', 'c\'est un produit2'));
-        commit('ADD_PRODUCT_TO_LIST', new ProductModel('https://cdn.vuetifyjs.com/images/cards/sunshine.jpg','produit3', 'c\'est un produit2'));
-
+        axios
+            .get(process.env.VUE_APP_URL_DB + '/posts')
+            .then(response => {
+                response.data.map((product: ProductModel) => {
+                    commit('ADD_PRODUCT_TO_LIST', new ProductModel(product.img, product.name, product.description));
+                })
+                 console.log(response.data)
+            })
+            .catch(error => console.log(error))
     }
 };
 

@@ -1,32 +1,32 @@
 {
   "posts": [
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit/200/200",
       "name": "produit",
       "description": "c'est un produit"
     },
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit1/200/200",
       "name": "produit1",
       "description": "c'est un produit1"
     },
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit2/200/200",
       "name": "produit2",
       "description": "c'est un produit2"
     },
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit3/200/200",
       "name": "produit3",
       "description": "c'est un produit3"
     },
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit4/200/200",
       "name": "produit4",
       "description": "c'est un produit4"
     },
     {
-      "src": "https://picsum.photos/200/200",
+      "img": "https://picsum.photos/seed/produit5/200/200",
       "name": "produit5",
       "description": "c'est un produit5"
     }
